@@ -4,7 +4,8 @@ import styles from "./App.module.css";
 import { fetchData } from "./api";
 class App extends Component {
     state = {
-        data: {}
+        data: {},
+        country: ''
     }
 
     async componentDidMount() {
@@ -13,14 +14,21 @@ class App extends Component {
         this.setState({ data: fetchedData })
     }
 
+    handleCountryChange = async (country) => {
+        // console.log('country in app.js', country)
+        const fetchedData = await fetchData(country)
+        // console.log('fetchedData', fetchedData)
+        this.setState({ data: fetchedData, country: country })
+    }
+
     render() {
-        const { data } = this.state
+        const { data, country } = this.state
 
         return (
             <div className={styles.container}>
                 <Cards data={data} />
-                <CountryPicker />
-                <Chart />
+                <CountryPicker handleCountryChange={this.handleCountryChange} />
+                <Chart data={data} country={country} />
             </div>
         );
     }
