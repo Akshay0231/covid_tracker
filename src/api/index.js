@@ -20,7 +20,7 @@ export const fetchDailyData = async () => {
             confirmed: dailyData.confirmed.total,
             deaths: dailyData.deaths.total,
             recovered: dailyData.recovered.total,
-            date: dailyData.date,
+            reportDate: dailyData.reportDate,
         }));
         return modifiedData;
     } catch (error) {

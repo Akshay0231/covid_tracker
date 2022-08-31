@@ -18,8 +18,8 @@ const Chart = () => {
   const lineChart = dailyData.length ? (
     <Line
       data={{
-        labels: dailyData.map(({ date }) =>
-          new Date(date).toLocaleDateString()
+        labels: dailyData.map(({ reportDate }) =>
+          new Date(reportDate).toLocaleDateString()
         ),
         datasets: [
           {
